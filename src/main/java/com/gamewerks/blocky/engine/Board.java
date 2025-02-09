@@ -7,10 +7,10 @@ import com.gamewerks.blocky.util.Constants;
 import com.gamewerks.blocky.util.Position;
 
 public class Board {
-    private int[][] well;
+    private bool[][] well;
     
     public Board() {
-        well = new int [Constants.BOARD_HEIGHT][Constants.BOARD_WIDTH];
+        well = new bool [Constants.BOARD_HEIGHT][Constants.BOARD_WIDTH];
     }
     
     public boolean isValidPosition(int row, int col) {
