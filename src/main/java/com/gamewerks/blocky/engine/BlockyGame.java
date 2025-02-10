@@ -20,7 +20,7 @@ public class BlockyGame {
     }
     
     private void trySpawnBlock() {
-        if (activePiece == null) {
+        if (activePiece != null) {
             if (board.collidesPiece(activePiece)) {
                 System.exit(0);
             }
