@@ -2,6 +2,7 @@ package com.gamewerks.blocky.engine;
 
 import com.gamewerks.blocky.util.Constants;
 import com.gamewerks.blocky.util.Position;
+import java.util.Random;
 
 public class BlockyGame {
     private static final int LOCK_DELAY_LIMIT = 30;
@@ -21,8 +22,8 @@ public class BlockyGame {
     
     private void trySpawnBlock() {
         if (activePiece == null) {
-            activePiece = new Piece(PieceKind.I, new Position(Constants.BOARD_HEIGHT - 1, Constants.BOARD_WIDTH / 2 - 2));
-            if (board.collidesPiece(activePiece)) {
+            activePiece = new Piece(PieceKind.I, new Position(5 , Constants.BOARD_WIDTH / 2 - 2));
+            if (board.collides(activePiece)) {
                 System.exit(0);
             }
         }
@@ -48,7 +49,7 @@ public class BlockyGame {
     }
     
     private void processGravity() {
-        Position nextPos = activePiece.getPosition().add(-1, 0);
+        Position nextPos = activePiece.getPosition().add(1, 0);
         if (!board.collides(activePiece.getLayout(), nextPos)) {
             lockCounter = 0;
             activePiece.moveTo(nextPos);
@@ -75,6 +76,16 @@ public class BlockyGame {
     
     public boolean[][] getWell() {
         return board.getWell();
+    }
+    
+     public void shuffle(int[] array) {
+        Random random = new Random();
+        for (int i = array.length - 1; i > 0; i--) {
+            int index = random.nextInt(i + 1);
+            int temp = array[index];
+            array[index] = array[i];
+            array[i] = temp;
+        }
     }
     
     public Piece getActivePiece() { return activePiece; }
