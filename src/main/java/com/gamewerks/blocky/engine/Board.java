@@ -7,10 +7,10 @@ import com.gamewerks.blocky.util.Constants;
 import com.gamewerks.blocky.util.Position;
 
 public class Board {
-    private bool[][] well;
+    private boolean [][] well;
     
     public Board() {
-        well = new bool [Constants.BOARD_HEIGHT][Constants.BOARD_WIDTH];
+        well = new boolean [Constants.BOARD_HEIGHT][Constants.BOARD_WIDTH];
     }
     
     public boolean isValidPosition(int row, int col) {
@@ -18,10 +18,10 @@ public class Board {
     }
     
     public boolean collides(Piece p) {
-        return collides(p.getLayout(), p.getPosition());
+        return collidesPosition(p.getLayout(), p.getPosition());
     }
     
-    public boolean collides(boolean[][] layout, Position pos) {
+    public boolean collidesPosition(boolean[][] layout, Position pos) {
         for (int row = 0; row < layout.length; row++) {
             int wellRow = pos.row - row;
             for (int col = 0; col < layout[row].length; col++) {
