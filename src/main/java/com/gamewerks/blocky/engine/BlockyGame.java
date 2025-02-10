@@ -20,11 +20,11 @@ public class BlockyGame {
     }
     
     private void trySpawnBlock() {
-        if (activePiece != null) {
+        if (activePiece == null) {
+            activePiece = new Piece(PieceKind.I, new Position(Constants.BOARD_HEIGHT - 1, Constants.BOARD_WIDTH / 2 - 2));
             if (board.collidesPiece(activePiece)) {
                 System.exit(0);
             }
-            activePiece = new Piece(PieceKind.I, new Position(Constants.BOARD_HEIGHT - 1, Constants.BOARD_WIDTH / 2 - 2));
         }
     }
     
@@ -52,7 +52,7 @@ public class BlockyGame {
         if (!board.collides(activePiece.getLayout(), nextPos)) {
             lockCounter = 0;
             activePiece.moveTo(nextPos);
-        } else {
+        } else  {
             if (lockCounter < LOCK_DELAY_LIMIT) {
                 lockCounter += 1;
             } else {
