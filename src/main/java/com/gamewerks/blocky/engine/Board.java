@@ -18,10 +18,10 @@ public class Board {
     }
     
     public boolean collides(Piece p) {
-        return collidesPosition(p.getLayout(), p.getPosition());
+        return collides(p.getLayout(), p.getPosition());
     }
     
-    public boolean collidesPosition(boolean[][] layout, Position pos) {
+    public boolean collides(boolean[][] layout, Position pos) {
         for (int row = 0; row < layout.length; row++) {
             int wellRow = pos.row - row;
             for (int col = 0; col < layout[row].length; col++) {
