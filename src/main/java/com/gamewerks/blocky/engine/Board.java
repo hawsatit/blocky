@@ -7,14 +7,14 @@ import com.gamewerks.blocky.util.Constants;
 import com.gamewerks.blocky.util.Position;
 
 public class Board {
-    private boolean [][] well;
+    private boolean[][] well;
     
     public Board() {
-        well = new boolean [Constants.BOARD_HEIGHT][Constants.BOARD_WIDTH];
+        well = new boolean[Constants.BOARD_HEIGHT][Constants.BOARD_WIDTH];
     }
     
     public boolean isValidPosition(int row, int col) {
-        return ((row >= 0) && (row <= well.length) && (col >= 0) && (col <= well[0].length));
+        return row >= 0 && row < (well.length - 3) && col >= 0 && col <= (well[0].length - 1);
     }
     
     public boolean collides(Piece p) {
@@ -82,7 +82,7 @@ public class Board {
         List completedRows = new LinkedList();
         for (int row = 0; row < Constants.BOARD_HEIGHT; row++) {
             if (isCompletedRow(row)) {
-                completedRows.add(well[row]);
+                completedRows.add(row);
             }
         }
         return completedRows;
