@@ -52,15 +52,18 @@ public class Board {
         }
     }
     
+    
     public void deleteRow(int n) {
-        for (int row = 0; row < n - 1; row++) {
-            for (int col = 0; col < Constants.BOARD_WIDTH; col++) {
-                well[row][col] = well[row+1][col];
-            }
-        }
         for (int col = 0; col < Constants.BOARD_WIDTH; col++) {
             well[n][col] = false;
         }
+        
+        for (int row = n; row > 0; row--) {
+            for (int col = 0; col < Constants.BOARD_WIDTH; col++) {
+                well[row][col] = well[row - 1][col];
+            }
+        }
+
     }
     
     public void deleteRows(List rows) {
